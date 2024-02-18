@@ -674,6 +674,7 @@ class Agent(object):
                     f"last response total_tokens ({current_total_tokens}) < {MESSAGE_SUMMARY_WARNING_FRAC * int(self.agent_state.llm_config.context_window)}"
                 )
 
+            printd(f"All new messages: {all_new_messages}")
             self._append_to_messages(all_new_messages)
             all_new_messages_dicts = [msg.to_openai_dict() for msg in all_new_messages]
             return all_new_messages_dicts, heartbeat_request, function_failed, active_memory_warning, response.usage.completion_tokens

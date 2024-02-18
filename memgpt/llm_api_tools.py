@@ -427,6 +427,9 @@ def create(
                 function_call=function_call,
                 user=str(agent_state.user_id),
             )
+        printd(f'Model endpoint before function call: {agent_state.llm_config.model_endpoint}')
+
+        # Call your function here
         return openai_chat_completions_request(
             url=agent_state.llm_config.model_endpoint,  # https://api.openai.com/v1 -> https://api.openai.com/v1/chat/completions
             api_key=credentials.openai_key,
